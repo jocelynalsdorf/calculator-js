@@ -2,17 +2,27 @@ body {
   background-color: #a99998;
 }
 .inner-edge {
- background-color: #eaecdf;
+  background-color: #eaecdf;
+  border-radius: 3px;
+  padding:10px;
+  -webkit-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+     -moz-box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
+          box-shadow: 4px 6px 18px 2px rgba(0,0,0,0.75);
 }
 .calculator {
   min-height:300px;
- 
   padding-top:100px;
   font-size:25px;
 }
 .input-area {
-  margin-top:12px;
+  margin-top: 9px;
   margin-bottom:8px;
   border-radius:3px;
   border:none;
+  webkit-box-shadow: inset -1px 0px 47px -20px rgba(0,0,0,0.45);
+    -moz-box-shadow: inset -1px 0px 47px -20px rgba(0,0,0,0.45);
+         box-shadow: inset -1px 0px 47px -20px rgba(0,0,0,0.45);
+}
+.col-md-3 {
+  padding:2px;
 }
