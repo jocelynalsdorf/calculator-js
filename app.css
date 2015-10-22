@@ -1,0 +1,18 @@
+body {
+  background-color: #a99998;
+}
+.inner-edge {
+ background-color: #eaecdf;
+}
+.calculator {
+  min-height:300px;
+ 
+  padding-top:100px;
+  font-size:25px;
+}
+.input-area {
+  margin-top:12px;
+  margin-bottom:8px;
+  border-radius:3px;
+  border:none;
+}
