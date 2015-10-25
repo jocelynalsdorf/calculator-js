@@ -36,7 +36,9 @@ body {
   background-color: #afca5b;
 }
  
-
+.pendingFunction {
+  background-color: red;
+}
 .num-row {
   margin: 5px;
 }
