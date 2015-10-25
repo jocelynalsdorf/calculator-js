@@ -39,19 +39,23 @@ body {
 .pendingFunction {
   background-color: #9db551;
 }
+
 .num-row {
   margin: 5px;
 }
+
 .title {
  padding-top: 22px;
  color: #eaecdf;
  font-size: 50px;
  font-family: 'Bree Serif', serif;
 }
+
 hr {
   border-top: 2px solid #afca5b;
 
 }
+
 a:hover {
   text-decoration: none;
 }

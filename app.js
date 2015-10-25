@@ -16,20 +16,17 @@
   }
     
     // resetCalc('0');
-    //close on-btn click function
-    $(".off-button").click(function(){
-      resetCalc(" ");
-    });
- $(".on-button").click(function(e){
+
+
+ $(".on-button").off().on('click',function(e){
   e.preventDefault();
     resetCalc('0');
 
-    $(".num-button").click(function(e){
+    $(".num-button").off().on('click',function(e){
     e.preventDefault();
     //has a calculation just been performed: t or f?
       if($("#display").data("fromPrevious") == true) {
         resetCalc($(this).text());
-        console.log("first if");
     //if calc has not just been performed and first num hasnt been locked (no fx btn click)
       } else if(($("#display").data("isPendingFunction") == true) && ($("#display").data("valueOneLocked") == false)) {
          console.log("first else if");
@@ -46,10 +43,8 @@
         // change boolean in .data from f to t
           $("#display").data("valueTwoLocked", true); 
 
-
     //click a number again after first num locked and a val exists for second num
       } else if(($("#display").data("isPendingFunction")) == true && ($("#display").data("valueOneLocked") == true)) {
-             console.log("second else if");
         //need to add the two vals together and reassign numbertwo val
         var curValue = $("#display").val();
         //the last number btn clicked
@@ -64,15 +59,11 @@
     //clicking on a number without any prior behaviors
       } else {
         //set curVal to whatever is in display
-        //console.log($("#display").val());
         var curValue = $("#display").val();
-       // console.log(curValue);
         //if no num by user yet, prevent 0 from staying in display when  new num clicked
         if(curValue == "0") {
           curValue = "";
-
         }
-
         //allow multiple nums to be shown on display
         var toAdd = $(this).text();
         //concat the vals so displayed properly 
@@ -80,10 +71,7 @@
         //set display to show newVal
         $("#display").val(newValue);
       }
-
     });
-
-   
 
     $(".function-button").click(function(e){
        e.preventDefault();
@@ -102,7 +90,6 @@
       $("#display").data("isPendingFunction", true);
       //set the val of thePendingFx in .data()
       $("#display").data("thePendingFunction", pendingFunction);
-
       //visual representation of current function w/ css class changes
       //first remove the class form any other btns
       $(".function-button").removeClass(".pending-function");
@@ -134,15 +121,17 @@
         $('#display').val(finalValue);
 
         resetCalc(finalValue);
+
         $("#display").data("fromPrevious", true)
 
       //deal with sq root seperately because it only needs one input, not two
       } else if($("#display").data("thePendingFunction") == "SQ") {
-          //get sq root  
+        //get sq root  
         var finalValue = Math.sqrt(parseFloat($("#display").val()) );
-         $('#display').val(finalValue);
+        $('#display').val(finalValue);
 
         resetCalc(finalValue);
+
         $("#display").data("fromPrevious", true)
         
       } else {
@@ -150,17 +139,22 @@
       }
 
     });
+  //clear all stuff
     $(".clear-button").click(function(){
        resetCalc("0"); 
     });
 
+     //close on-btn click function
 
+  }); //end of on-btn click event
+ $(".off-button").click(function(e){
+    e.preventDefault();
 
-
-
-});
-//drag functionality
-    $(".calculator").draggable(); 
-
+     resetCalc(' '); 
+     console.log($("#display").data());
+      
+    });
+  //drag functionality
+  $(".calculator").draggable(); 
 
 });//end of doc
