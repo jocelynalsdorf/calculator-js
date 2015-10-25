@@ -38,7 +38,7 @@
         // change boolean in .data from f to t
           $("#display").data("valueTwoLocked", true); 
     //click a number again after first num locked and a val exists for second num
-      } else if(($("#display").data("isPendingFunction") == true && ($("#display").data("valueOneLocked") == true)) {
+      } else if(($("#display").data("isPendingFunction")) == true && ($("#display").data("valueOneLocked") == true)) {
         //need to add the two vals together and reassign numbertwo val
         var curValue = $("#display").val();
         //the last number btn clicked
@@ -67,11 +67,67 @@
 
     });
 
+   
+
+    $(".function-button").click(function(){
+    //when fx-btn clicked, lock first num so that num btns know to start second ('fromPrevious:t' means a calc just happened)
+      if($("#display").data("fromPrevious") == true) {
+        //if calc just happened rest calc using the current display as current input val
+        resetCalc($("#display").val());
+        //not sure if I need to say this since I just called a function that does it
+        $("#display").data("valueOneLocked", false);
+        $("#display").data("fromPrevious", false)
+      }
+    //grab what the function should be from the btns text and set as pendingFunction value
+      var pendingFunction = $(this).text();
+      //state that there is now a pending function selected by changing boolean f to t
+      $("#display").data("isPendingFunction", true);
+      //set the val of thePendingFx in .data()
+      $("#display").data("thePendingFunction", pendingFunction);
+
+      //visual representation of current function w/ css class changes
+      //first remove the class form any other btns
+      $(".function-button").removeClass(".pending-function");
+      //then add the class to the current btn
+      $(this).addClass("pendingFunction");  
+    });
+
+    $(".equals-button").click(function(){
+    //first check if we are ready to do a calc (if both nums are locked)
+      if(($("#display").data("valueOneLocked")) == true &&  ($("#display").data("valueTwoLocked") == true)) {
+        if($("#display").data("thePendingFunction") == "+") {
+          //do addition
+          var finalValue = parseFloat($("#display").data("valueOne")) + parseFloat($("#display").data("valueTwo"));
+        } else if ($("#display").data("thePendingFunction") == "&ndash;") {
+           //do subtraction 
+           var finalValue = parseFloat($("#display").data("valueOne")) - parseFloat($("#display").data("valueTwo"));
+        } else if ($("#display").data("thePendingFunction") == "x") {
+          //multiply 
+          var finalValue = parseFloat($("#display").data("valueOne")) * parseFloat($("#display").data("valueTwo"));
+        } else if ($("#display").data("thePendingFunction") == "&divide;") {
+          //divide
+          var finalValue = parseFloat($("#display").data("valueOne")) / parseFloat($("#display").data("valueTwo"));
+        } else if ($("#display").data("thePendingFunction") == "%") {
+          //calculate what is valueOne% of valueTwo
+          var finalValue = (parseFloat($("#display").data("valueOne")) / 100) * parseFloat($("#display").data("valueTwo"));
+        } else if($("#display").data("thePendingFunction") == "&radic;") {
+          //get sq root
+          //$("#display").data("fromPrevious", true)
+          var finalValue = Math.sqrt(parseFloat($("#display").data("curValue"));
+        }
+
+        //show results
+        $('#display').val(finalValue);
+
+        resetCalc(finalValue);
+        $("#display").data("fromPrevious", true)
+
+      } else {
+        //both numbers are not locked so do nothing
+      }
+
+    });
     $(".clear-button").click(function(){});
-
-    $(".function-button").click(function(){});
-
-    $(".equals-button").click(function(){});
 
 
 
