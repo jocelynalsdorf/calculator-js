@@ -12,7 +12,7 @@ body {
 }
 .calculator {
   min-height:300px;
-  padding-top:100px;
+  padding-top:55px;
   font-size:22px;
 }
 .input-area {
@@ -37,8 +37,14 @@ body {
 }
  
 .pendingFunction {
-  background-color: red;
+  background-color: #9db551;
 }
 .num-row {
   margin: 5px;
+}
+.title {
+ padding-top: 22px;
+ color: #eaecdf;
+ font-size: 50px;
+ font-family: 'Bree Serif', serif;
 }

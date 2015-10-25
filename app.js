@@ -135,7 +135,7 @@
         $("#display").data("fromPrevious", true)
 
       //deal with sq root seperately because it only needs one input, not two
-      } else if($("#display").data("thePendingFunction") == "sq") {
+      } else if($("#display").data("thePendingFunction") == "SQ") {
           //get sq root  
         var finalValue = Math.sqrt(parseFloat($("#display").val()) );
          $('#display').val(finalValue);
@@ -158,7 +158,7 @@
 })();
 
 //drag functionality
-    $("#calculator").draggable(); 
+    $(".calculator").draggable(); 
 
 
 });//end of doc
