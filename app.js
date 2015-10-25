@@ -22,8 +22,8 @@
 (function(){
     resetCalc('0');
 
-    $(".num-button").click(function(){
-   
+    $(".num-button").click(function(e){
+    e.preventDefault();
     //has a calculation just been performed: t or f?
       if($("#display").data("fromPrevious") == true) {
         resetCalc($(this).text());
@@ -127,18 +127,22 @@
         } else if ($("#display").data("thePendingFunction") == "%") {
           //calculate what is valueOne% of valueTwo
           var finalValue = (parseFloat($("#display").data("valueOne")) / 100) * parseFloat($("#display").data("valueTwo")) + "%";
-        } else if($("#display").data("thePendingFunction") == "&radic;") {
-          //get sq root
-          //$("#display").data("fromPrevious", true)
-          var finalValue = Math.sqrt(parseFloat($("#display").data("curValue")));
-        }
-
+         }
         //show results
         $('#display').val(finalValue);
 
         resetCalc(finalValue);
         $("#display").data("fromPrevious", true)
 
+      //deal with sq root seperately because it only needs one input, not two
+      } else if($("#display").data("thePendingFunction") == "sq") {
+          //get sq root  
+        var finalValue = Math.sqrt(parseFloat($("#display").val()) );
+         $('#display').val(finalValue);
+
+        resetCalc(finalValue);
+        $("#display").data("fromPrevious", true)
+        
       } else {
         //both numbers are not locked so do nothing
       }
