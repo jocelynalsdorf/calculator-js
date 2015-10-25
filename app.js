@@ -16,10 +16,12 @@
   }
     
     // resetCalc('0');
-    $(".on-button").click(function(){ });//close on-btn click function
-    $(".off-button").click(function(){});
-
-(function(){
+    //close on-btn click function
+    $(".off-button").click(function(){
+      resetCalc(" ");
+    });
+ $(".on-button").click(function(e){
+  e.preventDefault();
     resetCalc('0');
 
     $(".num-button").click(function(e){
@@ -155,8 +157,8 @@
 
 
 
-})();
 
+});
 //drag functionality
     $(".calculator").draggable(); 
 
