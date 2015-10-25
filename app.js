@@ -115,13 +115,13 @@
         if($("#display").data("thePendingFunction") == "+") {
           //do addition
           var finalValue = parseFloat($("#display").data("valueOne")) + parseFloat($("#display").data("valueTwo"));
-        } else if ($("#display").data("thePendingFunction") == "&ndash;") {
+        } else if ($("#display").data("thePendingFunction") == "-") {
            //do subtraction 
            var finalValue = parseFloat($("#display").data("valueOne")) - parseFloat($("#display").data("valueTwo"));
         } else if ($("#display").data("thePendingFunction") == "x") {
           //multiply 
           var finalValue = parseFloat($("#display").data("valueOne")) * parseFloat($("#display").data("valueTwo"));
-        } else if ($("#display").data("thePendingFunction") == "&divide;") {
+        } else if ($("#display").data("thePendingFunction") == "/") {
           //divide
           var finalValue = parseFloat($("#display").data("valueOne")) / parseFloat($("#display").data("valueTwo"));
         } else if ($("#display").data("thePendingFunction") == "%") {
