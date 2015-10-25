@@ -115,7 +115,7 @@
           var finalValue = parseFloat($("#display").data("valueOne")) / parseFloat($("#display").data("valueTwo"));
         } else if ($("#display").data("thePendingFunction") == "%") {
           //calculate what is valueOne% of valueTwo
-          var finalValue = (parseFloat($("#display").data("valueOne")) / 100) * parseFloat($("#display").data("valueTwo")) + "%";
+          var finalValue = (parseFloat($("#display").data("valueOne")) / 100) * parseFloat($("#display").data("valueTwo"));
          }
         //show results
         $('#display').val(finalValue);
